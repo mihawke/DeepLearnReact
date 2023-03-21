@@ -1,5 +1,6 @@
 import React from 'react'
-import '../styles/HomePage.css'
+import './styles/HomePage.css'
+import { Cards } from '../components/cards'
 
 const HomePage = () => {
   return (
@@ -23,7 +24,9 @@ const HomePage = () => {
           </li>
         </ul>
       </div>
-      <h1>HomePage</h1>
+      <div>
+        <Cards></Cards>
+      </div>
     </div>
   )
 }
