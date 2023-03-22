@@ -1,11 +1,11 @@
 import React from 'react'
-import './styles/navbar.css'
+import styles from './styles/navbar.module.css'
 
 export const NavBar = () => {
   return (
     <div>
-        <div>
-        <ul className='nav-container'>
+      <div className={styles.container}>
+        <ul className={styles.navContainer}>
           <li>
             <a href="#">Home</a>
           </li>
