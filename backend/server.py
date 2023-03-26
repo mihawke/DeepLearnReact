@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from pymongo import MongoClient
 from bson import json_util
 import json
+import gridfs
 
 app = Flask(__name__)
 
@@ -20,7 +21,19 @@ def print_users():
     users_data = json.loads(json_util.dumps(users_data))
     #     
     return users_data
-    
+
+#Create a object of GridFs for the above database.
+fs = gridfs.GridFS(db)
+
+#define an image object with the location.
+file = "/home/cosmic/WorkSpace/DeepLearnReact/backend/assets/Sekiro.jpg"
+
+#Open the image in read-only format.
+with open(file, 'rb') as f:
+    contents = f.read()
+
+#Now store/put the image via GridFs object.
+fs.put(contents, filename="file")
 
 @app.route("/members")
 def members():
