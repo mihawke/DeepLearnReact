@@ -22,18 +22,22 @@ def print_users():
     #     
     return users_data
 
-#Create a object of GridFs for the above database.
+# create GridFS object for the database
 fs = gridfs.GridFS(db)
 
-#define an image object with the location.
-file = "/home/cosmic/WorkSpace/DeepLearnReact/backend/assets/Sekiro.jpg"
+# specify the path to the image file
+file_path = "/home/cosmic/WorkSpace/DeepLearnReact/backend/assets/Sekiro.jpg"
 
-#Open the image in read-only format.
-with open(file, 'rb') as f:
+# read the contents of the image file
+with open(file_path, 'rb') as f:
     contents = f.read()
 
-#Now store/put the image via GridFs object.
-fs.put(contents, filename="file")
+# store the image file in the database via GridFS
+file_id = fs.put(contents, filename="Sekiro.jpg")
+
+# save the file_id in the assets.images collection
+image_collection = db["assets.images"]
+image_collection.insert_one({"file_id": file_id})
 
 @app.route("/members")
 def members():
