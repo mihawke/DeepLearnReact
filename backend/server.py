@@ -9,8 +9,9 @@ app = Flask(__name__)
 
 # Connect to the MongoDB database
 client = MongoClient("mongodb+srv://pratik2211:pratik221100@cluster0.ruchz.mongodb.net/test")
-db = client["authentication"]
+db = client["assets"]
 users = db["users"]
+image_collection = db["images"]
 
 @app.route("/users")
 def print_users():
@@ -21,6 +22,11 @@ def print_users():
     users_data = json.loads(json_util.dumps(users_data))
     #     
     return users_data
+
+@app.route("/members")
+def members():
+    return {"members":["Member1","Member2","Member3"]}
+
 
 # create GridFS object for the database
 fs = gridfs.GridFS(db)
@@ -36,12 +42,8 @@ with open(file_path, 'rb') as f:
 file_id = fs.put(contents, filename="Sekiro.jpg")
 
 # save the file_id in the assets.images collection
-image_collection = db["assets.images"]
 image_collection.insert_one({"file_id": file_id})
 
-@app.route("/members")
-def members():
-    return {"members":["Member1","Member2","Member3"]}
 
 if __name__ == "__main__":
     app.run()
