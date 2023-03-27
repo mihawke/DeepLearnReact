@@ -4,7 +4,7 @@ import { Cards } from '../components/cards'
 import { NavBar } from '../components/navbar'
 import { SideBar } from '../components/sidebar'
 import ImageList from '../components/imageShow'
-import ImageUploader from '../components/imageUpload'
+import ImageUploader from '../components/imageUploader'
 
 
 
