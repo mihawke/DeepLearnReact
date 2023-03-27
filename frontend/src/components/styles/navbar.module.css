@@ -10,7 +10,7 @@
     display: flex;
     padding: 20px;
     border-radius: 5px;
-    background: pink;
+    background: silver;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     top:0;
     left:0;
@@ -19,6 +19,7 @@
     justify-content: space-around;
     list-style: none;
     margin: 0;
+    opacity: 0.5;
 }
 
 .navContainer li {
@@ -31,7 +32,7 @@
     text-decoration: none;
 }
 .navContainer:hover li a {
-    color: red;
+    color: black;
 }
 .navContainer:hover li a:not(:hover) {
     color: #fff;

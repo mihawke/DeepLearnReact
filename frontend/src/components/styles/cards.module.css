@@ -1,0 +1,23 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100%-20px);
+  gap: 8px;
+  max-width: 930px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  height: 260px;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

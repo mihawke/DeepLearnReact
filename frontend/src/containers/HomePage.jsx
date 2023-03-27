@@ -10,9 +10,9 @@ const HomePage = () => {
       <div>
         <NavBar/>
       </div>
-      <div>
+      {/* <div>
         <SideBar/>
-      </div>
+      </div> */}
       <div>
         <Cards/>
       </div>
