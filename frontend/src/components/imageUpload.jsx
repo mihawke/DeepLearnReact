@@ -8,7 +8,7 @@ const ImageUpload = () => {
 
     const handleClick = event => {
         hiddenImageinput.current.click();
-      };
+    };
 
     const handleFileInputChange = (event) => {
         setSelectedFile(event.target.files[0]);
