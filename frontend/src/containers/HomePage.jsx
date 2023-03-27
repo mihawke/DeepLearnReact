@@ -3,18 +3,24 @@ import styles from './styles/HomePage.module.css'
 import { Cards } from '../components/cards'
 import { NavBar } from '../components/navbar'
 import { SideBar } from '../components/sidebar'
+import ImageUpload from '../components/imageUpload'
+
+
 
 const HomePage = () => {
   return (
     <div className={styles.container}>
       <div>
-        <NavBar/>
+        {/* <NavBar /> */}
       </div>
       {/* <div>
         <SideBar/>
       </div> */}
       <div>
-        <Cards/>
+        <Cards />
+      </div>
+      <div>
+        <ImageUpload/>
       </div>
     </div>
   )
