@@ -1,4 +1,4 @@
-from flask import Flask, jsonify , send_file
+from flask import Flask, jsonify , send_file ,request
 from pymongo import MongoClient
 from bson import json_util
 import json
@@ -25,20 +25,14 @@ models = assets["models"]
 fs = gridfs.GridFS(assets)
 
 # specify the path to the image file
-file_path = "/home/cosmic/WorkSpace/DeepLearnReact/backend/assets/Sekiro.jpg"
-
-
-@app.route("/images")
-def upload_img():
-    # read the contents of the image file
-    with open(file_path, 'rb') as f:
-        contents = f.read()
-
-    # store the image file in the database via GridFS
-    file_id = fs.put(contents, filename="Sekiro.jpg")
-
-    # save the file_id in the assets.images collection
+@app.route("/upload", methods=["POST"])
+def upload_file():
+    file = request.files['file']
+    contents = file.read()
+    file_id = fs.put(contents, filename=file.filename)
     images.insert_one({"file_id": file_id})
+    return "File uploaded successfully!"
+
 
 @app.route("/file/<filename>")
 def file(filename):
