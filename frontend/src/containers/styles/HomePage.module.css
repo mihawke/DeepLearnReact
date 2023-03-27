@@ -4,11 +4,12 @@
     justify-content: center;
     align-items: center;
     overflow-y: scroll;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     background-color: black;
     position: relative;
     flex-direction: column;
+    padding-top: 100px;
 }
 
 .card_container{

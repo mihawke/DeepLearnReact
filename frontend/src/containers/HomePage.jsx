@@ -3,8 +3,8 @@ import styles from './styles/HomePage.module.css'
 import { Cards } from '../components/cards'
 import { NavBar } from '../components/navbar'
 import { SideBar } from '../components/sidebar'
-import ImageUpload from '../components/imageUpload'
 import ImageList from '../components/imageShow'
+import ImageUploader from '../components/imageUpload'
 
 
 
@@ -21,7 +21,7 @@ const HomePage = () => {
         <Cards />
       </div>
       <div>
-        <ImageUpload/>
+        <ImageUploader/>
       </div>
       <div>
         <ImageList></ImageList>
