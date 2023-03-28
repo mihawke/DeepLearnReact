@@ -24,7 +24,7 @@ models = assets["models"]
 # create GridFS object for the database
 fs = gridfs.GridFS(assets)
 
-# specify the path to the image file
+# file upload route and function
 @app.route("/upload", methods=["POST"])
 def upload_file():
     file = request.files['file']
@@ -32,17 +32,6 @@ def upload_file():
     file_id = fs.put(contents, filename=file.filename)
     images.insert_one({"file_id": file_id})
     return "File uploaded successfully!"
-
-
-@app.route("/file/<filename>")
-def file(filename):
-    # retrieve the file from the database using GridFS
-    file_data = fs.get_last_version(filename=filename).read()
-
-    # use send_file() to send the file data back to the client as an attachment
-    return send_file(io.BytesIO(file_data), mimetype='image/jpeg')
-
-
 
 @app.route("/users")
 def print_users():
