@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Depth Map Prediction</title>
+  </head>
+  <body>
+    <h1>Depth Map Prediction</h1>
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*">
+      <input type="submit" value="Predict">
+    </form>
+    {% if depth_map is defined %}
+      <h2>Depth Map:</h2>
+      <img src="data:image/png;base64,{{ depth_map }}" alt="Depth Map">
+    {% endif %}
+  </body>
+</html>
