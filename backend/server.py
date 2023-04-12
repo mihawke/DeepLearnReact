@@ -71,9 +71,6 @@ def print_users():
     return users_data
 
 
-# Load the model
-model = torch.load("/home/cosmic/WorkSpace/DeepLearnReact/backend/models/midas.pt", map_location=torch.device("cpu"))
-
 
 @app.route("/")
 def index():
@@ -85,7 +82,7 @@ model_type = "MiDaS_small"
 midas = torch.hub.load("intel-isl/MiDaS", model_type)
 
 # Load the saved model state dictionary
-model_state_dict = torch.load('midas.pt')
+model_state_dict = torch.load('/home/cosmic/WorkSpace/DeepLearnReact/backend/models/midas.pt')
 
 # Assign the state dictionary to the model
 midas.load_state_dict(model_state_dict)
@@ -99,7 +96,6 @@ def predict():
     # Load the image file sent by the user
     file = request.files["image"]
     img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     # Preprocess the input image
     midas_transforms = torch.hub.load("intel-isl/MiDaS", "transforms")
